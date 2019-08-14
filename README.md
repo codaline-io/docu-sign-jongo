@@ -4,6 +4,15 @@ First signer will be redirected (`api.php`) to the DocuSign signing process or i
 
 An example usage of the `lib.php` can be found in the `example.lib.php`.
 
+## Prequestion
+
+1. Create and Login to you DocuSign admin Account.
+2. Open AdminPanel
+3. Create an API under "Integrations" **Store the RSA private and public key in a secret and safe place!**
+4. The APIs `Integration key` is the `DS_CLIENT_ID`
+5. Grab your DS_IMPERSONATED_USER_GUID from "Users" and edit a user. The GUID is shown as `User name`
+6. To add `Redirect URIs` | `Return URLs` open the API and check the `Additional settings` area ;)
+
 ## Installation
 
 Requirements: PHP v5.4 or later + composer
@@ -18,7 +27,7 @@ Requirements: PHP v5.4 or later + composer
 
 - `DS_CLIENT_ID` - INTEGRATION_KEY # (Go To DocuSign Admin Panel - Integrations - Api And Keys - Add Api and copy integration key)
 - `DS_AUTH_SERVER` - default: "https://account-d.docusign.com"
-- `DS_IMPERSONATED_USER_GUID` - USER_ACCOUNT_GUID # (Admin Panel - Users - select user - User name), If the user is not already allowed to use the API, open: "https://account-d.docusign.com/oauth/auth?response_type=token&scope=signature%20impersonation&client_id={the client id}&redirect_uri={a valid return url}"
+- `DS_IMPERSONATED_USER_GUID` - USER_ACCOUNT_GUID # (Admin Panel - Users - select user - User name), If the user is not already allowed to use the API, open: `https://account-d.docusign.com/oauth/auth?response_type=token&scope=signature%20impersonation&client_id={the client id}&redirect_uri={a valid return url}`
 - `DS_TARGET_ACCOUNT_ID` - default `FALSE` (not needed?)
 - `DS_PRIVATE_KEY_FILE` - default `FALSE` - we have inline pricate key here
 - `DS_PRIVATE_KEY` - RSA private key string you get from docsign during API setup
