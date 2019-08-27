@@ -14,8 +14,8 @@
   ## email: one or array of email addresses used as signer mails
   ## name: one or array of names used as signer names
   ## return_url: A valid return url. The user gets redirected to if the document was successfully signed
-  ## pos_x: x coords of the sign field
-  ## pos_y: y coords of the sign field
+  ## pos_x: array of x coords of the sign field
+  ## pos_y: array of y coords of the sign field
   ## page: page number for the sign field
 
   function createEnvelopsAndGetViewUri($params) {
@@ -28,8 +28,8 @@
     $email = $params["email"];
     $name = $params["name"];
     $return_url = $params["return_url"];
-    $sign_pos_x = $params["pos_x"] ?: '20';
-    $sign_pos_y = $params["pos_y"] ?: '20';
+    $sign_pos_x = $params["pos_x"] ?: ['20'];
+    $sign_pos_y = $params["pos_y"] ?: ['20'];
     $sign_page = $params["page"] ?: '1';
     $first_client_user_id = '1';
     $first_recipient_id = '1';
@@ -39,6 +39,12 @@
     }
     if (is_array($email) == false) {
       $email = array($email);
+    }
+    if (is_array($sign_pos_x) == false) {
+      $sign_pos_x = array($sign_pos_x);
+    }
+    if (is_array($sign_pos_y) == false) {
+      $sign_pos_y = array($sign_pos_y);
     }
 
     $send_envelope_handler = new SendEnvelope($apiClient, $email, $name, $doc_b64, $pdf_title, $sign_pos_x, $sign_pos_y, $sign_page, $return_url, $email_subject);

@@ -20,10 +20,10 @@ Requirements: PHP v5.4 or later + composer
 1. Download files
 2. install composer `curl -sS https://getcomposer.org/installer | php`
 3. simply install vendors with `php composer.phar install`
-4. Check `example.env` and create a new `.env` file and paste the content of the example and fill in the valid values
+4. Check `example.env` and create a new `.env` file and paste the content of the example and fill in the valid values, if .env not supported, just use `ds_config.ini`
 5. run the `example.lib.php` or start a php server and call the `api.php`
 
-## Config (`example.env`)
+## Config (`example.env` | `ds_config.ini`)
 
 - `DS_CLIENT_ID` - INTEGRATION_KEY # (Go To DocuSign Admin Panel - Integrations - Api And Keys - Add Api and copy integration key)
 - `DS_AUTH_SERVER` - default: "https://account-d.docusign.com"
@@ -42,7 +42,7 @@ Requirements: PHP v5.4 or later + composer
   - `name[] | name` - name array of signer full names (index should be match email)
   - `email[] | email` - email array of signer emails (index should be match name)
   - `page` - page where the sign field should be added in the document
-  - `pos_y` & `pos_x` - x and y values where the sign field should be presented
+  - `pos_y[]` & `pos_x[]` - x and y values where the sign fields should be presented
   - `email_subject` - the email subject used when sending sign email
 - redirects to DocuSign and starts signing process for the **first** `name` and `email`!
 - sends signing mails to all other names and mails

@@ -71,8 +71,8 @@ class SendEnvelope extends Base {
             $sign_here = new \DocuSign\eSign\Model\SignHere([
                 'page_number' => self::$page,
                 'document_id' => '1',
-                'x_position' => self::$pos_x,
-                'y_position' => self::$pos_y
+                'x_position' => self::$pos_x[$index],
+                'y_position' => self::$pos_y[$index]
             ]);
 
             # Add the tabs model (including the sign_here tabs) to the signer
