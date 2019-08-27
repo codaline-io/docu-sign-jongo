@@ -34,7 +34,7 @@ Requirements: PHP v5.4 or later + composer
 
 ## API - `api.php`
 
-- POST to àpi.php`
+- POST to `api.php`
 - form data:
   - `pdf_base64_content` - pdf file as base64 string
   - `pdf_title` - The title of the pdf file
